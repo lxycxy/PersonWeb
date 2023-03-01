@@ -1,18 +1,18 @@
 <template>
   <div class="sidemenu">
     <el-menu
-        active-text-color="#ffd04b"
+        active-text-color="#00AEEE"
         default-active="2"
         text-color="#242f42"
         active-background-color="#20a0ff"
     >
       <el-menu-item index="2">
         <el-icon><icon-menu /></el-icon>
-        <span>Navigator Two</span>
+        <span>首页</span>
       </el-menu-item>
       <el-menu-item index="3">
         <el-icon><document /></el-icon>
-        <span>Navigator Three</span>
+        <span>日记库</span>
       </el-menu-item>
       <el-menu-item index="4">
         <el-icon><setting /></el-icon>
