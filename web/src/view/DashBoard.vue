@@ -4,9 +4,11 @@
 
 <script>
 import axios from "axios";
+import LoginDialog from "@/components/LoginDialog.vue";
 
 export default {
   name: "DashBoard",
+  components: {LoginDialog},
 }
   //
   // axios({

@@ -1,8 +1,5 @@
 <template>
   <div class="header">
-    <div class="logo">
-      <el-image style="width: 150px;height: 100px" :src="logoImg" :fit="cover"/>
-    </div>
     <div class="header-right">
       <div class="header-user-con">
         <!-- 用户头像 -->
@@ -17,7 +14,7 @@
 					</span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item command="user">个人中心</el-dropdown-item>
+              <el-dropdown-item command="user" @click="loginVisible = true">个人中心</el-dropdown-item>
               <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -25,11 +22,19 @@
       </div>
     </div>
   </div>
+
+
+    <LoginDialog v-show="loginVisible" />
+
 </template>
 
 <script lang="ts" setup>
 import qqImg from '../assets/img/qq.png'
-import logoImg from '../assets/img/logo.svg'
+import {ref} from "vue";
+import LoginDialog from "@/components/LoginDialog.vue";
+
+let loginVisible = ref(true);
+
 </script>
 
 <style scoped>
