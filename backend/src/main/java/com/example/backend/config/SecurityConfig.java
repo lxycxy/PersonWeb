@@ -11,11 +11,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
+/**
+ * 设定开放链接
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
