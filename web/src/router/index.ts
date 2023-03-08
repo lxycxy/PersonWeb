@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../view/Home.vue';
 const routes:RouteRecordRaw[]  = [
     {
         //路由初始指向
@@ -8,14 +7,27 @@ const routes:RouteRecordRaw[]  = [
     },{
         path:'/',
         name:'Home',
-        component:Home,
+        meta: {
+            author:true,
+        },
+        component:() => import("../view/Home.vue"),
         children:[
             {
                 path:"/dashboard",
                 name:'dashboard',
-                component: () => import("../view/DashBoard.vue")
+                meta: {
+                    author:true,
+                },
+                component: () => import("../view/DashBoard.vue"),
             }
         ]
+    },{
+        path:'/login',
+        name:'login',
+        meta: {
+            author:false,
+        },
+        component: () => import("../view/Login.vue")
     }
 ]
 
@@ -23,5 +35,15 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
+/**
+ * 非登录状态 限定路由
+ */
+router.beforeEach((to, from, next) => {
 
+    if(to.meta.author && ! localStorage.getItem("jwt_token")) {
+        next({name:'login'});
+    } else {
+        next();
+    }
+})
 export default router

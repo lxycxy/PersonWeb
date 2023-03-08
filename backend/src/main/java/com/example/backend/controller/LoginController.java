@@ -17,8 +17,8 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @PostMapping
-    public String login(@RequestParam Map<String, String> map) {
+    @PostMapping("/api/login/")
+    public Map<String, String> login(@RequestParam Map<String, String> map) {
 
         String username,password;
 

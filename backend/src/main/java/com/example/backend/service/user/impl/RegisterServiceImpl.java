@@ -21,12 +21,12 @@ public class RegisterServiceImpl implements RegisterService {
     public Map<String, String> register(String username, String password, String confirmedPassword) {
         Map<String, String> resp = new HashMap<>();
 
-        if(username.isEmpty() || username.length() > 16) {
+        if(username.isEmpty() || username.length() == 0|| username.length() > 16) {
             resp.put("info", "用户名不能为空或超过16位");
             return resp;
         }
 
-        if(password.isEmpty() || password.length() > 16 ) {
+        if(password.isEmpty() || password.length() == 0 || password.length() > 16 ) {
             resp.put("info", "密码不能为空或超过16位");
             return resp;
         }

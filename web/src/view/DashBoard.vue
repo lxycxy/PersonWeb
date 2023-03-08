@@ -2,35 +2,30 @@
   <div>DashBoard</div>
 </template>
 
-<script>
+<script setup lang="ts">
+import {useUserStore} from "@/store/user";
 import axios from "axios";
-import LoginDialog from "@/components/LoginDialog.vue";
 
-export default {
-  name: "DashBoard",
-  components: {LoginDialog},
-}
-  //
-  // axios({
-  //     url:"http://localhost:3000/api/login/",
-  //     method:"GET",
-  //     params:{
-  //       username:'lxy',
-  //       password:'plxy',
-  //     }
-  //   }).then((resp) => {
-  //     console.log(resp.data);
-  //   })
-
+const userStore = useUserStore();
+const getInfo = () => {
   axios({
-    url:"http://localhost:3000/api/getuser/",
-    method:"GET",
+    url:"http://localhost:3000/api/getinfo/",
+    method:"POST",
     headers:{
-      Authorization:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXNzd29yZCI6InBseHkiLCJleHAiOjE2Nzg1ODcyMTIsImlhdCI6MTY3Nzk4MjQxMiwidXNlcm5hbWUiOiJseHkifQ.M1khf-siefYIJZcemYqQ-psve40XqPGRG0gfhVUfv04"
+      Authorization: localStorage.getItem("jwt_token")
+    },
+    params:{
+      token: localStorage.getItem("jwt_token")
     }
   }).then((resp) => {
-    console.log(resp);
+    userStore.$patch({
+      id: resp.data.id,
+      username: resp.data.username,
+      photo: resp.data.photo,
+    })
   })
+}
+getInfo()
 
 </script>
 

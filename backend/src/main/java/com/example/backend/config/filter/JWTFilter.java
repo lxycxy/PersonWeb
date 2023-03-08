@@ -43,14 +43,16 @@ public class JWTFilter extends OncePerRequestFilter {
             return;
         }
 
-        String username;
+        String username = null;
 
         try {
             Map<String, Claim> claim = JWTUtils.verifyToken(token);
             username = claim.get("username").asString();
             request.setAttribute("username", username);
-
         } catch (Exception e) {
+//            response.getWriter().write("token异常");
+//            filterChain.doFilter(request, response);
+//            return;
             throw new RuntimeException("token异常");
         }
 
@@ -59,8 +61,7 @@ public class JWTFilter extends OncePerRequestFilter {
         User user = userMapper.selectOne(queryWrapper.eq("username", username));
 
         if(user == null) {
-            filterChain.doFilter(request, response);
-            return;
+            throw new RuntimeException("用户未注册");
         }
 
 
