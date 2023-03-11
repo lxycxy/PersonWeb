@@ -93,6 +93,11 @@ const register = () => {
         type:'error',
       })
     }
+  }).catch((resp) => {
+    ElMessage({
+      message: "网络错误",
+      type:'error',
+    })
   })
 }
 const login = () => {
@@ -120,6 +125,11 @@ const login = () => {
           type:'error',
         })
       }
+    }).catch((resp) => {
+      ElMessage({
+        message: "网络错误",
+        type:'error',
+      })
     })
 }
 

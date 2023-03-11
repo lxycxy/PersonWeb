@@ -23,9 +23,9 @@ a {
 
 .content-box {
     position: absolute;
-    left: 250px;
+    left: 18%;
     right: 0;
-    top: 70px;
+    top: 0;
     bottom: 0;
     padding-bottom: 30px;
     -webkit-transition: left .3s ease-in-out;

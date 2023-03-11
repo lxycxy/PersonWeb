@@ -1,5 +1,4 @@
 <template>
-  <Header />
   <SideMenu />
 
 <!--  内容页使用动画并缓存每个内容页-->
@@ -17,7 +16,6 @@
 <script setup lang="ts">
 import {useTagsStore} from "@/store/tags";
 import SideMenu from "@/components/SideMenu.vue";
-import Header from "@/components/Header.vue";
 
 const tags = useTagsStore();
 </script>

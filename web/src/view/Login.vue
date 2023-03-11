@@ -12,10 +12,10 @@ import LoginDialog from "@/components/LoginDialog.vue";
 
 <style scoped>
 .back {
-  background-image: url("../assets/img/background.png");
-  background-size: auto;
+  background-image: url("../assets/img/theme.png");
+  background-size: 100%;
   width: 100%;
-  height: 1000px;
+  height: 100%;
 
 }
 </style>

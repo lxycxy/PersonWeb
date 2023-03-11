@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import {useUserStore} from "@/store/user";
 import axios from "axios";
+import router from "@/router";
 
 const userStore = useUserStore();
 const getInfo = () => {
@@ -23,6 +24,8 @@ const getInfo = () => {
       username: resp.data.username,
       photo: resp.data.photo,
     })
+  }).catch((resp) => {
+    router.push('/login');
   })
 }
 getInfo()
